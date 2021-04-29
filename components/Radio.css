@@ -1,0 +1,24 @@
+.form-label{
+    margin-bottom: .5rem;
+    font-size: 14px;
+    display: inline-block;
+}
+.radio-group{
+    display: inline-block !important;
+}
+.radio-group .MuiFormGroup-row {
+    flex-direction: row;
+    display: inline-block;
+}
+.radio-group .MuiTypography-body1 {
+    font-size: 18px;
+}
+.MuiRadio-colorPrimary.Mui-checked {
+    color: var(--red) !important;
+}
+.radio-group .MuiSvgIcon-root {
+    width: 0.9em;
+}
+.user-register .radio-group{
+    margin-bottom: 20px;
+}

@@ -1,0 +1,36 @@
+.btn{
+    padding: 8px;
+    border-radius: 5px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+}
+.btn-save{
+    background-color: var(--red);
+    padding: 8px 30px;
+}
+.btn-add{
+    background-color: var(--red);
+    padding: 8px 20px;
+}
+.btn-cancel{
+    background-color: var(--lightGrey);
+    padding: 8px 25px;
+    color: black;
+}
+.btn-search{
+    background-color: var(--red);
+    border-radius: 0px;
+    padding: 8px 30px;
+    margin: 0;
+}
+.btn-login{
+    background-color: var(--red);
+    width: 100%;
+    padding: 10px;
+}
+
