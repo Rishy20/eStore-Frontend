@@ -33,4 +33,11 @@
     width: 100%;
     padding: 10px;
 }
-
+.btn-cart{
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    width: 80%;
+    padding: 10px;
+    font-size: 14px;
+}

@@ -3,16 +3,19 @@ import './App.css'
 import Header from "./components/Header";
 import UserRegister from "./components/pages/UserRegister";
 import Login from "./components/pages/Login";
+import ProductCard from "./components/ProductCard";
+import ProductHolder from "./components/ProductHolder";
 
 
 function App(){
 return(
     <div className='App'>
-        <Login/>
-        {/*<Header/>*/}
-        {/*<div className="main">*/}
-        {/*    <UserRegister/>*/}
-        {/*</div>*/}
+
+        <Header/>
+        <div className="main">
+            <ProductHolder/>
+
+        </div>
     </div>
 )
 }
