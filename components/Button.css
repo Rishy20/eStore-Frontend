@@ -41,3 +41,16 @@
     padding: 10px;
     font-size: 14px;
 }
+.btn-checkout{
+    background-color: #262626;
+    color: white;
+    font-weight: 600;
+    width: 96%;
+    /*margin: 15px;*/
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 0px;
+}
+.btn-checkout:hover{
+    background-color: var(--red);
+}

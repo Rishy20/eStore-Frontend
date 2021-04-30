@@ -29,6 +29,7 @@
 .login-links{
     padding: 15px 10px;
     display: flex;
+    cursor: pointer;
 }
 .header-link{
     font-size:16px;
