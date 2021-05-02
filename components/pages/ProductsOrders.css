@@ -1,0 +1,14 @@
+body {
+    background-color: var(--lightGrey);
+}
+
+.container {
+    height: 100vh;
+    padding-top: 100px;
+    padding-inline: 24px;
+}
+
+.separator {
+    margin-top: -2px;
+    border: 1px lightgrey solid;
+}
