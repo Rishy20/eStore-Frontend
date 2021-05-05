@@ -29,7 +29,13 @@ const EditProduct = props => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = event => {
-        const {name, value} = event.target;
+        let {name, value} = event.target;
+
+        if (name === "price" || name === "qty") {
+            let result = parseInt(value);
+            value = !isNaN(result) ? result : value;
+        }
+
         setValues({...values, [name]: value})
     }
 
@@ -39,16 +45,15 @@ const EditProduct = props => {
         setIsSubmitting(true);
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         if(Object.keys(errors).length === 0 && isSubmitting) {
             if (url) {
-                await submitForm();
-                props.toProducts();
+                submitForm();
             }
         }
-    })
+    }, [errors])
 
-    const submitForm = async () => {
+    const submitForm = () => {
         fetch(url + `/${product._id}`, {
             headers: {
                 "Accept": "application/json",
@@ -57,7 +62,10 @@ const EditProduct = props => {
             method: "PUT",
             body: JSON.stringify(values)
         }).then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                props.toProducts();
+            })
             .catch(err => console.error(err))
     }
 

@@ -144,16 +144,18 @@ export default function validateInfo(values){
     }
     // Validate price
     if(values.hasOwnProperty("price")) {
-        if (!values.price.trim()) {
+        if (isNaN(values.price)) {
+            errors.price = "Please enter a valid price";
+        } else if (values.price <= 0) {
             errors.price = "Please enter a price";
         }
     }
     // Validate qty
     if(values.hasOwnProperty("qty")) {
-        if (!values.qty.trim()) {
-            errors.qty = "Please enter a quantity";
-        } else if (isNaN(values.qty)) {
+        if (isNaN(values.qty)) {
             errors.qty = "Please enter a valid quantity";
+        } else if (values.qty <= 0) {
+            errors.qty = "Please enter a quantity";
         }
     }
 
