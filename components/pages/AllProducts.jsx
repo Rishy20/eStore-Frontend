@@ -16,6 +16,8 @@ import {
 import Button from "../Button";
 import {Delete, Edit} from "@material-ui/icons";
 
+const url = "http://localhost:3000/api/v1/products";
+
 const AllProducts = props => {
     // Data states
     const [data, setData] = useState([]);
@@ -31,22 +33,10 @@ const AllProducts = props => {
     const [editProduct, setEditProduct] = useState(null);
 
     useEffect(() => {
-        const dbData = [
-            {img: "img_src", name: "Google Pixel 5", price: 200000, qty: 25},
-            {img: "img_src", name: "Google Pixel 4", price: 150000, qty: 35},
-            {img: "img_src", name: "Google Pixel 3", price: 120000, qty: 15},
-            {img: "img_src", name: "Google Pixel 2", price: 80000, qty: 20},
-            {img: "img_src", name: "Google Pixel 1", price: 600000, qty: 35},
-            {img: "img_src", name: "Samsung Galaxy S8", price: 170000, qty: 32},
-            {img: "img_src", name: "LG L3", price: 100000, qty: 14},
-            {img: "img_src", name: "Xiaomi Redmi 9", price: 35000, qty: 53},
-            {img: "img_src", name: "Apple iPhone 8", price: 220000, qty: 23},
-            {img: "img_src", name: "Nokia 5.3", price: 26000, qty: 1},
-            {img: "img_src", name: "Nokia 6.1", price: 32000, qty: 4},
-            {img: "img_src", name: "Nokia 8.2", price: 63000, qty: 3},
-        ]
-
-        setData(dbData);
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setData(data))
+            .catch(err => console.log(err));
     }, []);
 
     useEffect(() => {
@@ -101,7 +91,7 @@ const AllProducts = props => {
 
     // Delete product
     const deleteProduct = delItem => {
-        let newData = data.filter(item => (item.name !== delItem.name));
+        let newData = data.filter(item => (item._id !== delItem._id));
         setData(newData);
     }
 
@@ -110,7 +100,7 @@ const AllProducts = props => {
             <CardHeader
                 title="All Products"
                 action={
-                    <Link to="add">
+                    <Link to="/products/add">
                         <Button
                             name="Add Products"
                             btnStyle="btn-login"
@@ -184,10 +174,11 @@ const AllProducts = props => {
                                 {tableData
                                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map(item => (
-                                    <TableRow key={item.name}>
+                                    <TableRow key={item._id}>
                                         <TableCell align="center">
                                             <img
                                                 src={item.img}
+                                                alt={item.name}
                                                 style={{
                                                     minHeight: "160px",
                                                     maxHeight: "160px"
