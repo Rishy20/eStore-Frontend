@@ -123,5 +123,39 @@ export default function validateInfo(values){
         }
     }
 
+    /* Product Validations */
+    // Validate product name
+    if(values.hasOwnProperty("name")) {
+        if (!values.name.trim()) {
+            errors.name = "Please enter a product name";
+        }
+    }
+    // Validate brand
+    if(values.hasOwnProperty("brand")) {
+        if (!values.brand.trim()) {
+            errors.brand = "Please enter a brand name";
+        }
+    }
+    // Validate SKU
+    if(values.hasOwnProperty("sku")) {
+        if (!values.sku.trim()) {
+            errors.sku = "Please enter an SKU";
+        }
+    }
+    // Validate price
+    if(values.hasOwnProperty("price")) {
+        if (!values.price.trim()) {
+            errors.price = "Please enter a price";
+        }
+    }
+    // Validate qty
+    if(values.hasOwnProperty("qty")) {
+        if (!values.qty.trim()) {
+            errors.qty = "Please enter a quantity";
+        } else if (isNaN(values.qty)) {
+            errors.qty = "Please enter a valid quantity";
+        }
+    }
+
     return errors;
 }

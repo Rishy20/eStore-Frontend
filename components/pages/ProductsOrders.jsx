@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import {Switch, Route} from "react-router-dom";
-import {makeStyles, Tab, Tabs, Typography} from "@material-ui/core";
+import {makeStyles, Tab, Tabs} from "@material-ui/core";
 import TabPanel from "../TabPanel";
 import "./ProductsOrders.css";
 import AllProducts from "./AllProducts";
 import AllOrders from "./AllOrders";
+import AddProduct from "./AddProduct";
 
 const useStyles = makeStyles({
     cardContainer: {
@@ -60,7 +61,7 @@ const ProductsOrders = () => {
                         <AllProducts styles={styles} />
                     </Route>
                     <Route path="/products/add">
-                        Add product
+                        <AddProduct styles={styles} />
                     </Route>
                     <Route path="/products/edit">
                         Edit product
