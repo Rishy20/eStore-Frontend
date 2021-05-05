@@ -3,7 +3,7 @@ import Form from "./Form";
 
 //Input box names used in the form so that they can be sent to useForm hook to maintain the state
 const names={
-    acctype:'Personal Account',
+    accType:'Personal Account',
     fname:'',
     lname:'',
     email:'',
@@ -17,7 +17,7 @@ const names={
     zipcode:''
 }
 //Form Submit Url
-const url = "http://localhost:3000/api/v1/researchers";
+const url = "http://localhost:8280/user";
 
 
 //Buttons to be displayed in the form
@@ -38,7 +38,7 @@ export default function PersonalAccountRegister(props){
     const inputs=[
         {
             type:"radio-full",
-            name:"acctype",
+            name:"accType",
             values:["Personal Account","Seller Account"],
             onSelect:props.onSelect
         },

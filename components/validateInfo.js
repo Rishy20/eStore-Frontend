@@ -22,12 +22,7 @@ export default function validateInfo(values){
             errors.email = 'Email address is invalid';
         }
     }
-    //Validate Gender
-    if(values.hasOwnProperty("gender")) {
-        if (!values.gender.trim()) {
-            errors.gender = "Please select a gender";
-        }
-    }
+
     //Validate Contact Number
     if(values.hasOwnProperty("contact")) {
         if (!values.contact.trim()) {
@@ -36,29 +31,51 @@ export default function validateInfo(values){
             errors.contact = "Please enter a valid Contact Number";
         }
     }
-    //Validate Address
-    if(values.hasOwnProperty("address")) {
-        if (!values.address.trim()) {
-            errors.address = "Please enter your address";
-        }
-    }
-    //Validate Age
-    if(values.hasOwnProperty("age")) {
-        if (!values.age.trim()) {
-            errors.age = "Please enter your age";
-        }else if(/[^0-9]/.test(values.age) || values.age<=0 || values.age > 120){
-            errors.age = "Please enter a valid age";
+    //Validate Address 1
+    if(values.hasOwnProperty("address1")) {
+        if (!values.address1.trim()) {
+            errors.address1 = "Please enter your address";
         }
     }
 
-    //Validate NIC
-    if(values.hasOwnProperty("nic")) {
-        if (!values.nic.trim()) {
-            errors.nic = "Please enter your NIC number";
-        }else if(!/^([0-9]{9}[x|X|v|V]|[0-9]{12})$/i.test(values.nic)){
-            errors.nic = "Please enter a valid NIC number";
+    //Validate City
+    if(values.hasOwnProperty("city")) {
+        if (!values.city.trim()) {
+            errors.city = "Please enter your city";
         }
     }
+
+    //Validate State
+    if(values.hasOwnProperty("state")) {
+        if (!values.state.trim()) {
+            errors.state = "Please enter your state";
+        }
+    }
+
+    //Validate zipcode
+    if(values.hasOwnProperty("zipcode")) {
+        if (!values.zipcode.trim()) {
+            errors.zipcode = "Please enter your zipcode";
+        }
+    }
+    //Validate country
+    if(values.hasOwnProperty("country")) {
+        if (!values.country.trim()) {
+            errors.country = "Please select your country";
+        }
+    }
+    //Validate Mobile Number
+    if(values.hasOwnProperty("mobile")) {
+        if (!values.mobile.trim()) {
+            errors.mobile = "Please enter a mobile Number";
+        }else if(! /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(values.mobile)){
+            errors.mobile = "Please enter a valid mobile Number";
+        }
+    }
+
+
+
+
     //Validate Password
     if(values.hasOwnProperty("password")) {
         if (!values.password) {

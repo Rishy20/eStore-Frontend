@@ -3,6 +3,7 @@ import "./Cart.css"
 import CartItem from "./CartItem";
 import image from 'url:../public/images/iphone.jpg';
 import Button from "./Button";
+import {Link} from "react-router-dom";
 
 
 function Cart({toggle,products,updateQty,remove,total}){
@@ -32,7 +33,7 @@ function Cart({toggle,products,updateQty,remove,total}){
                             <span className="total-amount">Rs.{total().toFixed(2)}</span>
                         </div>
                         <div className="cart-btn">
-                        <Button name="CHECKOUT" btnStyle="btn-checkout" />
+                            <Link to="/checkout"><Button name="CHECKOUT" btnStyle="btn-checkout"  onclick={toggle} /></Link>
                         </div>
                     </div>
                 :null

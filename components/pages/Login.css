@@ -16,3 +16,11 @@
 .login-form div{
     margin-bottom: 30px;
 }
+.login-error{
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    padding: 1rem 1rem;
+    border-radius: .25rem;
+    font-size: 14px;
+}

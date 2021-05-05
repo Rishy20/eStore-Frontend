@@ -3,11 +3,20 @@ import './App.css'
 import Header from "./components/Header";
 import Cart from "./components/Cart";
 import Home from "./components/pages/Home";
+import Billing from "./components/pages/Billing";
+import image from 'url:./public/images/iphone.jpg';
+import UserRegister from "./components/pages/UserRegister";
+import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
+import Login from "./components/pages/Login";
+import checkLogin from "./components/CheckLogin";
+import SearchResult from "./components/pages/SearchResult";
+import OrderSuccess from "./components/OrderSuccess";
 
 
 function App(){
 
     const [isCartClicked,setIsCartClicked] = useState(false);
+    const [loginStatus,setLoginStatus] = useState(checkLogin());
 
     function toggleCart(){
         setIsCartClicked(!isCartClicked);
@@ -50,19 +59,55 @@ function App(){
     }
     function calculateTotal(){
         let total =  cartProducts.reduce((ack,item)=>ack+item.price*item.qty,0);
+
         return total;
     }
+    function logout() {
+        localStorage.removeItem("token");
+        setLoginStatus(false)
+    }
+
+    function emptyCart(){
+        setCartProducts([]);
+    }
+
+
 
 return(
+    <Router>
     <div className='App'>
-        <Header toggleCart={toggleCart} />
+        <Header toggleCart={toggleCart} userType={loginStatus} logout={logout}/>
         {
             isCartClicked?<Cart toggle={toggleCart} products={cartProducts} updateQty={updateQty} remove={removeProducts} total={calculateTotal}/>:""
         }
         <div className="main">
-            <Home addToCart={addToCart}/>
+
+                <Switch>
+                    <Route exact path="/">
+                        <Home addToCart={addToCart}/>
+
+                    </Route>
+                    <Route exact path="/register">
+                        {!loginStatus?<UserRegister setLogin={(data)=>{setLoginStatus(data)}}/>:<Redirect to={"/"}/>}
+                    </Route>
+                    <Route exact path="/login">
+                        {!loginStatus?<Login setLogin={(data)=>{setLoginStatus(data)}}/>:<Redirect to={"/"}/>}
+                    </Route>
+                    <Route exact path="/checkout">
+                        <Billing cart={cartProducts} total={calculateTotal} clearCart={emptyCart} />
+                    </Route>
+                    <Route path="/search/:query">
+                        <SearchResult addToCart={addToCart}/>
+                    </Route>
+                </Switch>
+
+
+
         </div>
+
+
     </div>
+    </Router>
 )
 }
 export default App;

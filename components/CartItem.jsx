@@ -5,7 +5,7 @@ function CartItem(props){
     return (
         <div className="cart-item">
             <div className="cart-item-img">
-                <img src={props.img} />
+                <img src={"http://localhost:3000/"+props.img} />
             </div>
             <div className="cart-item-detail">
                 <span className="cart-item-close" onClick={props.remove}><i className="fas fa-times"></i></span>

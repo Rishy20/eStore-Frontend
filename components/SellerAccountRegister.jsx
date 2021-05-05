@@ -2,7 +2,7 @@ import React from "react";
 import Form from "./Form";
 
 const names={
-    acctype:'Seller Account',
+    accType:'Seller Account',
     fname:'',
     lname:'',
     email:'',
@@ -16,7 +16,7 @@ const names={
     zipcode:''
 }
 //Form Submit Url
-const url = "http://localhost:3000/api/v1/researchers";
+const url = "http://localhost:8280/user";
 
 
 //Buttons to be displayed in the form
@@ -36,7 +36,7 @@ export default function SellerAccountRegister(props){
     const inputs=[
         {
             type:"radio-full",
-            name:"acctype",
+            name:"accType",
             values:["Personal Account","Seller Account"],
             onSelect:props.onSelect
         },

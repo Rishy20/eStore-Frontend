@@ -10,7 +10,7 @@ function ProductCard(props){
         <div className="product-card">
 
             <div className="product-img">
-                <img src={props.img} />
+                <img src={"http://localhost:3000/"+props.img} />
             </div>
             <div className="product-title">{props.name}</div>
             <div className="product-price">Rs.{props.price}</div>

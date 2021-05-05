@@ -22,6 +22,7 @@ function useForm(callback,validate,val,url){
     const handleSubmit = e=> {
         e.preventDefault();
         //Sets errors if there are errors
+
         setErrors(validate(values));
         setIsSubmitting(true);
     }
@@ -44,7 +45,6 @@ function useForm(callback,validate,val,url){
     //This function handles the POST api call to submit the form data
     const submitForm = () =>{
 
-
             fetch(url,{
                 headers: {
                     'Accept': 'application/json',
@@ -53,7 +53,7 @@ function useForm(callback,validate,val,url){
                 method:"POST",
                 body: JSON.stringify(values)
             }).then(res => res.json())
-                .then(data=>console.log(data))
+                .then(data=>callback(data))
                 .catch(err=>console.log(err));
     }
 

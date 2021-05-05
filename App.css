@@ -20,6 +20,9 @@ a{
 .MuiGrid-grid-md-12{
     text-align: center;
 }
+.payment-body .MuiGrid-grid-md-12{
+    text-align: left;
+}
 .MuiGrid-spacing-xs-2 > .MuiGrid-item {
     padding: 8px 15px !important;
 }

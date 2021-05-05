@@ -11,13 +11,24 @@ const names={
     email:'',
     password:''
 }
-function Login(){
+const url = "http://localhost:8280/estore?service=login"
+function Login({setLogin}){
 
     //Import methods from useForm hook
-    const {handleChange, handleSubmit, values, errors } = useForm(submitForm,validate,names);
+    const {handleChange, handleSubmit, values, errors } = useForm(submitForm,validate,names,url);
     const[isSubmitted,setIsSubmitted] = useState(false);
-    function submitForm(){
+    const [message,setMessage] = useState(null);
+    let userType;
+    function submitForm(data){
         setIsSubmitted(true);
+        console.log(data);
+        if(data.auth){
+            userType = data.usertype;
+            setLogin(userType);
+            localStorage.setItem("token",data.token);
+        }else{
+            setMessage(data.message)
+        }
         console.log("Form Submitted")
     }
     return(
@@ -29,6 +40,7 @@ function Login(){
                     <form onSubmit={handleSubmit}>
                     <Input type="email" name="email" label="Email" onChange={handleChange} value={values["email"]} error={errors["email"] ? errors["email"] : ''} />
                     <Input type="password" name="password" label="Password" onChange={handleChange} value={values["password"]} error={errors["password"] ? errors["password"] : ''}  />
+                        {message?<div className="login-error">{message}</div>:null}
                     <Button btnStyle="btn-login" type="submit" name="SIGN IN"/>
                     </form>
 
@@ -37,4 +49,5 @@ function Login(){
         </div>
     )
 }
-export default Login
+
+export default Login;

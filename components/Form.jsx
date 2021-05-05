@@ -69,11 +69,13 @@ function Form(props){
                 <div style={props.btnstyle==='top'? btnTop:btnStyle}>
                     {
                         buttons.map(btn => {
-                            return <Button btnStyle={btn.style} name={btn.name} type={btn.type} key={btn.name}/>
+                            return <Button btnStyle={btn.style} name={btn.name} onclick={btn.onclick} type={btn.type} key={btn.name}/>
                         })
                     }
                 </div>
             </form>
+
+
         </div>
     )
 }
