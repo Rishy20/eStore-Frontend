@@ -6,6 +6,7 @@ import "./ProductsOrders.css";
 import AllProducts from "./AllProducts";
 import AllOrders from "./AllOrders";
 import AddProduct from "./AddProduct";
+import EditProduct from "./EditProduct";
 
 const useStyles = makeStyles({
     cardContainer: {
@@ -44,6 +45,8 @@ const ProductsOrders = () => {
     const styles = useStyles();
 
     const [tab, setTab] = useState(0);
+    // State for the current product in edit
+    const [editProduct, setEditProduct] = useState(null);
 
     const changeTab = (event, tab) => setTab(tab);
 
@@ -58,13 +61,13 @@ const ProductsOrders = () => {
             <TabPanel value={tab} index={0}>
                 <Switch>
                     <Route exact path="/products">
-                        <AllProducts styles={styles} />
+                        <AllProducts styles={styles} setEditProduct={setEditProduct} />
                     </Route>
                     <Route path="/products/add">
                         <AddProduct styles={styles} />
                     </Route>
                     <Route path="/products/edit">
-                        Edit product
+                        <EditProduct styles={styles} editProduct={editProduct} />
                     </Route>
                 </Switch>
             </TabPanel>

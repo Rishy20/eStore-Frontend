@@ -29,8 +29,6 @@ const AllProducts = props => {
     // Pagination states
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    // Edit product state
-    const [editProduct, setEditProduct] = useState(null);
 
     useEffect(() => {
         fetch(url)
@@ -93,6 +91,15 @@ const AllProducts = props => {
     const deleteProduct = delItem => {
         let newData = data.filter(item => (item._id !== delItem._id));
         setData(newData);
+    }
+
+    // Set product for editing
+    const setEditProductHandler = tableItem => {
+        for (let item of data) {
+            if (item._id === tableItem._id) {
+                props.setEditProduct(item);
+            }
+        }
     }
 
     return (
@@ -215,7 +222,7 @@ const AllProducts = props => {
                                                 <IconButton
                                                     component={Link}
                                                     to="/products/edit"
-                                                    onClick={() => setEditProduct(item)}
+                                                    onClick={() => setEditProductHandler(item)}
                                                 >
                                                     <Edit />
                                                 </IconButton>
