@@ -3,11 +3,6 @@ import {useState, useRef} from "react";
 import "./FileUpload.css";
 const DEFAULT_MAX_FILE_SIZE = 8388608;
 
-import pdf from 'url:../public/images/pdf.png';
-import doc from 'url:../public/images/word.png';
-import ppt from 'url:../public/images/powerpoint.png';
-
-
 function FileUpload({
     callback,
     maxFileSize = DEFAULT_MAX_FILE_SIZE,
@@ -104,6 +99,7 @@ function FileUpload({
                                         <img
                                             src={URL.createObjectURL(file)}
                                             alt={`file preview ${index}`}
+                                            className="img-preview"
                                         />
                                     )}
 
