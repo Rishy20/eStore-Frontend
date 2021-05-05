@@ -90,7 +90,14 @@ const AllProducts = props => {
     // Delete product
     const deleteProduct = delItem => {
         let newData = data.filter(item => (item._id !== delItem._id));
-        setData(newData);
+
+        fetch(url + `/${delItem._id}`, {method: "DELETE"})
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setData(newData);
+            })
+            .catch(err => console.log(err));
     }
 
     // Set product for editing
