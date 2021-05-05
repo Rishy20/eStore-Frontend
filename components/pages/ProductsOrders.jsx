@@ -4,6 +4,7 @@ import {makeStyles, Tab, Tabs, Typography} from "@material-ui/core";
 import TabPanel from "../TabPanel";
 import "./ProductsOrders.css";
 import AllProducts from "./AllProducts";
+import AllOrders from "./AllOrders";
 
 const useStyles = makeStyles({
     cardContainer: {
@@ -56,7 +57,7 @@ const ProductsOrders = () => {
             <TabPanel value={tab} index={0}>
                 <Switch>
                     <Route exact path="/products">
-                        <AllProducts styles={styles}/>
+                        <AllProducts styles={styles} />
                     </Route>
                     <Route path="/products/add">
                         Add product
@@ -67,7 +68,7 @@ const ProductsOrders = () => {
                 </Switch>
             </TabPanel>
             <TabPanel value={tab} index={1}>
-                <Typography>Orders</Typography>
+                <AllOrders styles={styles} />
             </TabPanel>
         </div>
     )
