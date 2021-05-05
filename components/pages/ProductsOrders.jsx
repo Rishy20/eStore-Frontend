@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, useHistory} from "react-router-dom";
 import {makeStyles, Tab, Tabs} from "@material-ui/core";
 import TabPanel from "../TabPanel";
 import "./ProductsOrders.css";
@@ -48,6 +48,12 @@ const ProductsOrders = () => {
     // State for the current product in edit
     const [editProduct, setEditProduct] = useState(null);
 
+    const history = useHistory();
+
+    const toProducts = () => {
+        history.push("/products");
+    }
+
     const changeTab = (event, tab) => setTab(tab);
 
     return (
@@ -64,10 +70,10 @@ const ProductsOrders = () => {
                         <AllProducts styles={styles} setEditProduct={setEditProduct} />
                     </Route>
                     <Route path="/products/add">
-                        <AddProduct styles={styles} />
+                        <AddProduct styles={styles} toProducts={toProducts} />
                     </Route>
                     <Route path="/products/edit">
-                        <EditProduct styles={styles} editProduct={editProduct} />
+                        <EditProduct styles={styles} editProduct={editProduct} toProducts={toProducts} />
                     </Route>
                 </Switch>
             </TabPanel>

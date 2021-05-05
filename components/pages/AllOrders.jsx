@@ -176,26 +176,24 @@ const AllOrders = props => {
                                             <TableCell>
                                                 <Typography
                                                     variant="body1"
-                                                    align="center"
                                                     classes={{body1: props.styles.tableData}}
                                                 >
                                                     {order.products.map(product => (
-                                                        <>
+                                                        <div key={product._id} style={{display: "inline-block"}}>
                                                             {product.name}:&nbsp;
                                                             <span style={{color: "grey"}}>
                                                                 {product.qty}
                                                                 &nbsp;
                                                                 {product.qty > 1 ? "items" : "item"}
                                                             </span>
-                                                            <br />
-                                                        </>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                        </div>
                                                     ))}
                                                 </Typography>
                                             </TableCell>
                                             <TableCell>
                                                 <Typography
                                                     variant="body1"
-                                                    align="center"
                                                     classes={{body1: props.styles.tableData}}
                                                 >
                                                     {order.customer.deliverytype}

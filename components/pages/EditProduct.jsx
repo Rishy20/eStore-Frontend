@@ -39,16 +39,16 @@ const EditProduct = props => {
         setIsSubmitting(true);
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         if(Object.keys(errors).length === 0 && isSubmitting) {
             if (url) {
-                submitForm();
-
+                await submitForm();
+                props.toProducts();
             }
         }
     })
 
-    const submitForm = () => {
+    const submitForm = async () => {
         fetch(url + `/${product._id}`, {
             headers: {
                 "Accept": "application/json",
@@ -151,7 +151,7 @@ const EditProduct = props => {
                     </Grid>
                     <div style={{marginBlock: "24px", float: "right"}}>
                         <Button name="Save" btnStyle="btn-save" type="submit" />
-                        <Button name="Cancel" btnStyle="btn-cancel" />
+                        <Button name="Cancel" btnStyle="btn-cancel" type="cancel" onclick={() => props.toProducts()} />
                     </div>
                 </form>
             </CardContent>
