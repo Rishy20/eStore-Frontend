@@ -37,6 +37,18 @@ export default function validateInfo(values){
             errors.address1 = "Please enter your address";
         }
     }
+    //Validate Address
+    if(values.hasOwnProperty("address")) {
+        if (!values.address.trim()) {
+            errors.address = "Please enter your address";
+        }
+    }
+    //Validate Business name
+    if(values.hasOwnProperty("businessName")) {
+        if (!values.businessName.trim()) {
+            errors.businessName = "Please enter your Business Name";
+        }
+    }
 
     //Validate City
     if(values.hasOwnProperty("city")) {
@@ -139,6 +151,52 @@ export default function validateInfo(values){
             errors.cvc = "Please enter a valid cvc code";
         }
     }
+
+    /* Product Validations */
+    // Validate product name
+    if(values.hasOwnProperty("name")) {
+        if (!values.name.trim()) {
+            errors.name = "Please enter a product name";
+        }
+    }
+    // Validate brand
+    if(values.hasOwnProperty("brand")) {
+        if (!values.brand.trim()) {
+            errors.brand = "Please enter a brand name";
+        }
+    }
+    // Validate SKU
+    if(values.hasOwnProperty("sku")) {
+        if (!values.sku.trim()) {
+            errors.sku = "Please enter an SKU";
+        }
+    }
+    // Validate price
+    if(values.hasOwnProperty("price")) {
+        if (isNaN(values.price)) {
+            errors.price = "Please enter a valid price";
+        } else if (values.price <= 0) {
+            errors.price = "Please enter a price";
+        }
+    }
+    // Validate qty
+    if(values.hasOwnProperty("qty")) {
+        if (isNaN(values.qty)) {
+            errors.qty = "Please enter a valid quantity";
+        } else if (values.qty <= 0) {
+            errors.qty = "Please enter a quantity";
+        }
+    }
+
+    //Validate Pincode
+    if(values.hasOwnProperty("pincode")) {
+        if (!values.pincode.trim()) {
+            errors.pincode = "Please enter a pin code";
+        }else if(!/^[0-9]{4}$/.test(values.pincode)){
+            errors.pincode = "Please enter a valid pin code";
+        }
+    }
+
 
     return errors;
 }

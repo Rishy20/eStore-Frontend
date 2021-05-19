@@ -16,12 +16,11 @@ function Cart({toggle,products,updateQty,remove,total}){
                 <h3 className="cart-title">My Cart</h3>
                 <span className="close-icon" onClick={toggle}><i className="fas fa-times"></i></span>
             </div>
-
+            {/*Check if there are products in the cart*/}
             {cartProducts.length === 0 ? <p className="no-items">No items in cart.</p> : null}
             {
-
                 cartProducts.map((product,index)=>{
-                    return <CartItem img={product.img} pname={product.name} price={product.price} remove={()=>remove(product.id)} qty={product.qty} key={product.id} id={product.id} updateQty={(e)=>updateQty(index,e)} />
+                    return <CartItem img={product.img} pname={product.name} price={product.price} remove={()=>remove(product._id)} qty={product.qty} key={product._id} id={product._id} updateQty={(e)=>updateQty(index,e)} />
                 })
             }
 

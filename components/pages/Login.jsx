@@ -11,17 +11,23 @@ const names={
     email:'',
     password:''
 }
+//Login url
 const url = "http://localhost:8280/estore?service=login"
+
+//Login Component
 function Login({setLogin}){
 
     //Import methods from useForm hook
     const {handleChange, handleSubmit, values, errors } = useForm(submitForm,validate,names,url);
+    //Method to handle Submission State
     const[isSubmitted,setIsSubmitted] = useState(false);
+    //method to display error message
     const [message,setMessage] = useState(null);
+    //Variable to store user type
     let userType;
     function submitForm(data){
         setIsSubmitted(true);
-        console.log(data);
+        //Check if login is successful
         if(data.auth){
             userType = data.usertype;
             setLogin(userType);
@@ -29,7 +35,6 @@ function Login({setLogin}){
         }else{
             setMessage(data.message)
         }
-        console.log("Form Submitted")
     }
     return(
         <div className="user-login">

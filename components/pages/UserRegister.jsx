@@ -6,10 +6,8 @@ import PersonalAccountRegister from "../PersonalAccountRegister";
 import SellerAccountRegister from "../SellerAccountRegister";
 import SideImage from "../SideImage";
 
-
-
-
-function UserRegister(){
+//Component to handle Registration
+function UserRegister({setRegister}){
     const[isSubmitted,setIsSubmitted] = useState(false);
     const[accountType,setAccountType] = useState("Personal Account");
 
@@ -19,7 +17,7 @@ function UserRegister(){
 
     function submitForm(){
         setIsSubmitted(true);
-        console.log("Form Submitted")
+        setRegister();
     }
     return(
         <div className="user-register">

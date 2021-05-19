@@ -5,15 +5,15 @@ import CheckoutItem from "./CheckoutItem";
 import Button from "./Button"
 import {Link} from "react-router-dom";
 
-
+//Component to displayCheckout
 function Checkout({cart,total,callback}){
 
     const products = {cart}
-    console.log(products)
     return(
         <div className="checkout">
             <PageTitle title="checkout"/>
             <div className="checkout-body">
+                {/*Check if there are products in the cart*/}
                 {products.cart.length === 0 ? <p className="no-items">No items in cart. Please add products to the cart to checkout</p> : null}
 
                 {products.cart.length !== 0 ?

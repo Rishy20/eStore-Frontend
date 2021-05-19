@@ -14,7 +14,7 @@ const names={
     country:'',
     zipcode:''
 }
-
+//Input boxes
 const inputs=[
     {
         label:"First Name",

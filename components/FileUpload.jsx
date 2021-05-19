@@ -3,19 +3,17 @@ import {useState, useRef} from "react";
 import "./FileUpload.css";
 const DEFAULT_MAX_FILE_SIZE = 8388608;
 
-import pdf from 'url:../public/images/pdf.png';
-import doc from 'url:../public/images/word.png';
-import ppt from 'url:../public/images/powerpoint.png';
-
-
+//This component handles file uploads
 function FileUpload({
     callback,
     maxFileSize = DEFAULT_MAX_FILE_SIZE,
     ...props
                     })
 {
-    const [files,setFiles] = useState({});
+    //State to store files
+    const [files,setFiles] = useState([]);
     const fileInputField = useRef(null);
+    //State to store errors
     const [error,setError] = useState(null);
     let fileType;
     const handleUploadBtnClick = () => {
@@ -36,6 +34,7 @@ function FileUpload({
         for (let file of newFiles) {
             if (file.size <= maxFileSize) {
                 fileType = file.type.split("/")[0];
+                //Validate files
                 if(fileType === "image"){
 
                     if (!props.multiple) {
@@ -58,7 +57,6 @@ function FileUpload({
         Object.keys(nestedObj).map((key) => nestedObj[key]);
 
     const callUpdateFiles = (files) => {
-        // const filesAsArray = convertToArray(files);
         callback(files);
     };
 
@@ -99,15 +97,14 @@ function FileUpload({
                         return (
                             <div key={fileName} className="single-file-icon">
                                 <div>
-
+                                    {/*Check if the file is an image*/}
                                     {isImageFile && (
                                         <img
                                             src={URL.createObjectURL(file)}
                                             alt={`file preview ${index}`}
+                                            className="img-preview"
                                         />
                                     )}
-
-
                                     <div>
                                         <span className="file-name">{file.name}</span>
                                         <i className="fas fa-trash-alt remove-file" onClick={()=>removeFile(fileName)} />

@@ -7,22 +7,30 @@ import Checkout from "../Checkout";
 import OrderSuccess from "../OrderSuccess";
 
 export default function Billing({cart,total,clearCart}){
-
+    //State to maintain Submission state
     const[isSubmitted,setIsSubmitted] = useState(false);
+    //State to maintain Confirmation State
     const[isConfirmed, setIsConfirmed] = useState(false);
+    //State to Check whether shipping details are entered
     const[isShippingEntered, setIsShippingEntered] = useState(false);
-    const [isPaymentMade, setIsPaymentMade] = useState(false);
-    const [error,setError] = useState(false);
-    const[values,setValues] = useState({products:cart});
-    const [orderId,setOrderId] = useState(0);
 
+    const [isPaymentMade, setIsPaymentMade] = useState(false);
+    //State to store errors
+    const [error,setError] = useState(false);
+    //State to store values
+    const[values,setValues] = useState({products:cart});
+    //State to store order Id
+    const [orderId,setOrderId] = useState(0);
+    //Method to set payment details to sate
     function setPayment(payment){
         setValues({...values,...payment});
         setIsPaymentMade(true);
+        values.products.forEach(p=>{delete p.description; delete p.category; delete p.brand; delete p.sku; delete p.img;})
         submitForm(payment);
     }
+    //Method to handle form submission
     function submitForm(payment){
-
+        //Creating an object with data to submit
         const obj = {
             "delivery":{
                 "fname":values.fname,
@@ -43,18 +51,20 @@ export default function Billing({cart,total,clearCart}){
             },
             "products":values.products
         }
+        //Setting card details to the object
         if(payment.paymenttype === "Card"){
             obj.payment.chname=payment.chname;
             obj.payment.cvc=payment.cvc;
             obj.payment.cnum=payment.cnum;
             obj.payment.expiry=payment.expiry;
         }else{
+            //Setting mobile payment details
             obj.payment.mobile=payment.mobile;
             obj.payment.pincode=payment.pincode;
             obj.payment.mobilesp=payment.mobilesp;
         }
-        console.log(obj);
-        fetch("http://localhost:8280/checkout",{
+        //Sends a POST request to the backend with the Order details
+        fetch("http://localhost:8280/estore?service=checkout",{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -72,18 +82,12 @@ export default function Billing({cart,total,clearCart}){
                 }
             })
             .catch(err=>console.log(err));
-
-
     }
+
     function shippingEntered(val){
         setIsShippingEntered(true);
         setValues({...values,...val});
     }
-
-
-
-
-
 
     function setTotal(total){
         setValues({...values,["total"]:parseInt(total)});

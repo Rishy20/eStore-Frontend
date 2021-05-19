@@ -20,6 +20,7 @@ export default function PaymentInfo({callback,total,setTotal,backBtn}){
         let dtype = e.target.value;
         setDeliveryType(dtype);
         let totAmount = total();
+        //Add 500 to total if home delivery is selected
         dtype==="Home Delivery"?totAmount=(total()+500).toFixed(2):totAmount=total().toFixed(2);
         setTot(totAmount);
         setTotal(totAmount);
@@ -34,6 +35,7 @@ export default function PaymentInfo({callback,total,setTotal,backBtn}){
                 <span className="payment-total-amount">Rs.{tot}</span>
             </div>
             {
+                //Display Payment based on Payment type
                 paymentType==="Card"?
                     <PaymentCard callback={callback} selectPayment={selectPayment} selectDelivery={selectDelivery} deliveryType={deliveryType} backBtn={backBtn}/>:
                     <PaymentMobile callback={callback} selectPayment={selectPayment} selectDelivery={selectDelivery} deliveryType={deliveryType} backBtn={backBtn}/>

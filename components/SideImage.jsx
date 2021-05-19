@@ -1,6 +1,7 @@
 import React from "react";
 import store from 'url:../public/images/shop.svg';
 import "./SideImage.css"
+//This component contains the side image displayed in the login and register pages
 export default function SideImage(){
     return(
         <div className="side-img">

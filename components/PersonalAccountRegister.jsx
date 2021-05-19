@@ -17,7 +17,7 @@ const names={
     zipcode:''
 }
 //Form Submit Url
-const url = "http://localhost:8280/user";
+const url = "http://localhost:8280/estore?service=register";
 
 
 //Buttons to be displayed in the form

@@ -1,10 +1,7 @@
 import React, {useState} from "react";
-import PageTitle from "./PageTitle";
 import Form from "./Form";
 
-
-
-
+//Component to display Card Payment details
 export default function PaymentCard({callback,selectPayment,selectDelivery,deliveryType,backBtn}){
 
     //Input box names used in the form so that they can be sent to useForm hook to maintain the state

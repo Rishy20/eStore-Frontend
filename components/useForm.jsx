@@ -32,8 +32,10 @@ function useForm(callback,validate,val,url){
             //Checks if there are no errors and the form is in IsSubmitting state
             if(Object.keys(errors).length === 0 && isSubmitting ){
                 //Callback the submitForm method
-                callback(values);
-                // //Submit the form
+                if(!url){
+                    callback(values);
+                }
+                //Submit the form
                 if(url){
                     submitForm();
                 }
@@ -48,7 +50,7 @@ function useForm(callback,validate,val,url){
             fetch(url,{
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 method:"POST",
                 body: JSON.stringify(values)

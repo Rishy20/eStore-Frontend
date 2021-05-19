@@ -15,14 +15,14 @@ function Header({toggleCart,userType,logout}){
             <div className="search-bar">
                 <Search/>
             </div>
-
             <span className="login-links">
                 {
+                    //Check usertype and display Sell only if the user is a seller
                     userType?(
                         <>
                             {
-                        userType==="Buyer"?(
-                            <Link to="/sell"><a className="header-link" href="#">Sell</a></Link>
+                        userType==="Seller"?(
+                            <Link to="/products"><a className="header-link" href="#">Sell</a></Link>
                         ):null
                             }
                             <a className="header-link" href="#" onClick={logout}>Logout</a>

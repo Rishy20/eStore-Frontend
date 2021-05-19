@@ -1,6 +1,6 @@
 import React from "react";
 import './Progress.css'
-const Registration = "Registration"
+
 function Progress(props){
     let count = 1;
 
@@ -23,15 +23,6 @@ function Progress(props){
                 })
             }
 
-            {/*<span className="progress-detail">*/}
-            {/*    <span className="progress-number">2</span>*/}
-            {/*    <span className="progress-name">Tickets</span>*/}
-            {/*</span>*/}
-            {/*<hr className="progress-bar"/>*/}
-            {/*<span className="progress-detail">*/}
-            {/*    <span className="progress-number">3</span>*/}
-            {/*    <span className="progress-name">Confirmation</span>*/}
-            {/*</span>*/}
 
 
         </div>
